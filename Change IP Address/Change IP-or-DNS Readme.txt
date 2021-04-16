@@ -5,7 +5,11 @@ can read in the file ip-data.csv to set static IPs or DHCP. The
 change-ip-address.ps1 file also contains a date check to make sure that 
 the file is allowed to execute the iP address change as one methoed is 
 to have the scheduled job execute on computer boot if doing a data 
-center relocation.   
+center relocation. Note that powershell can be started with the .bat file
+so that you can run the script to bypass the "remote execution policy" 
+check should the remote exection policy not be set on the client machine. 
+Default setting is to not allow, so if not set via manually or GPO it must 
+be used or this will fail.
 
 File can be pushed to the windows clients via GPO. 
     >>Computer configuration>Preferences>Windows Settings>Files
