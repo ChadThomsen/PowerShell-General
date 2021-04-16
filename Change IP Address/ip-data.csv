@@ -1,0 +1,12 @@
+﻿name,type,address,subnet,gateway,dnsone,dnstwo
+computer1.mydomain.com,STATIC,192.168.240.114,255.255.254.0,192.168.241.254,10.2.67.53,192.168.103.224
+computer2.mydomain.com,STATIC,192.168.240.115,255.255.254.0,192.168.241.254,10.2.67.53,192.168.103.224
+computer3.mydomain.com,STATIC,192.168.240.116,255.255.254.0,192.168.241.254,10.2.67.53,192.168.103.224
+computer4.mydomain.com,STATIC,192.168.240.117,255.255.254.0,192.168.241.254,10.2.67.53,192.168.103.224
+computer5.mydomain.com,STATIC,192.168.240.118,255.255.254.0,192.168.241.254,10.2.67.53,192.168.103.224
+computer6.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
+computer7.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
+computer8.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
+computer9.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
+computer10.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
+computer11.mydomain.com,DHCP,,,,10.2.67.53,192.168.103.224
