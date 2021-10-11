@@ -20,7 +20,7 @@ if($curdate.day -eq $chgday -and $curdate.Month -eq $chgmonth -and $curdate.year
         if($fqdn -eq $compname.name){        
             #Get adapter name 
             $NICs = Get-WMIObject Win32_NetworkAdapterConfiguration `
-            | where {$_.IPEnabled -eq "True" -and $_.DHCPEnabled -like "False"}
+            | Where-Object {$_.IPEnabled -eq "True" -and $_.DHCPEnabled -like "False"}
 
             #Is host to use DHCP or Static
             #write-host "IPaddy is of type $($compname.type)"
@@ -43,7 +43,6 @@ if($curdate.day -eq $chgday -and $curdate.Month -eq $chgmonth -and $curdate.year
             Foreach($NIC in $NICs) {
                 $NIC.SetDNSServerSearchOrder($DNSservers)   
             }  
-            
             #update DNS
             ipconfig /registerdns
             Write-Output "Script Executed on $curdate" | out-file -force -FilePath $logfile

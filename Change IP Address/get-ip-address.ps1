@@ -3,15 +3,14 @@ Get list IP data of all enabled AD computers.  If WMI connection fails, list mes
 CMT 4-15-2020
 #>
 
-#$computers = get-adcomputer -filter "enabled -eq 'true'" | select -ExpandProperty name
-$computers = get-adcomputer -filter 'enabled -eq $true' -properties * | ? {$_.Distinguishedname -like "*DCCAR2*"} | select -ExpandProperty name
+#Build a filter here to get the computers you want to check.
+$computers = get-adcomputer -filter 'enabled -eq $true' -properties * | Where-Object {$_.Distinguishedname -like "*DATA*"} | Select-Object -ExpandProperty name
 
 foreach($computer in $computers){
     #write-host "Connecting to host $computer"
     try{
-        (Get-WMIObject Win32_NetworkAdapterConfiguration -ComputerName $computer -ErrorAction stop | where {$_.ipenabled -eq $true} | `
-            Select pscomputername, DNSServerSearchOrder | sort DNSServerSearchOrder | ft -hidetableheaders -autosize | out-string).trim()
-            #Select pscomputername,IPAddress,DefaultIPGateway,DNSServerSearchOrder 
+        (Get-WMIObject Win32_NetworkAdapterConfiguration -ComputerName $computer -ErrorAction stop | Where-Object {$_.ipenabled -eq $true} | `
+            Select-Object pscomputername, DNSServerSearchOrder | Sort-Object DNSServerSearchOrder | Format-Table -hidetableheaders -autosize | out-string).trim()
     }
     catch{Write-Output "$computer could not be reached."}
 }   
